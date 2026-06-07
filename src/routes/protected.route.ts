@@ -25,10 +25,6 @@ protectedRoute.use("*", async (c, next) => {
   await next();
 });
 
-protectedRoute.on(["POST", "GET", "PUT", "PATCH", "DELETE"], "/api/*", (c) => {
-  return auth.handler(c.req.raw);
-});
-
 protectedRoute.get("/api/session", (c) => {
   const session = c.get("session");
   const user = c.get("user");
