@@ -7,6 +7,6 @@ publicRoute.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
-publicRoute.on(["POST", "GET", "PUT", "PATCH", "DELETE"], "/auth/*", (c) => {
+publicRoute.on(["POST", "GET", "PUT", "PATCH", "DELETE"], "/*", (c) => {
   return auth.handler(c.req.raw);
 });

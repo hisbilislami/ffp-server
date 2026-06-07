@@ -24,7 +24,7 @@ app.use(
 );
 
 app.route("/", publicRoute);
-app.route("/api/auth", publicRoute); // Auth endpoints are public
+app.route("/api/auth", publicRoute);
 
 app.route("/api", protectedRoute);
 
