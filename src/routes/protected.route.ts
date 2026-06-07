@@ -10,6 +10,15 @@ export const protectedRoute = new Hono<{
 }>();
 
 protectedRoute.use("*", async (c, next) => {
+  const path = new URL(c.req.url).pathname;
+  if (
+    path.startsWith("/api/auth/sign-up") ||
+    path.startsWith("/api/auth/sign-in")
+  ) {
+    await next();
+    return;
+  }
+
   const session = await auth.api.getSession({ headers: c.req.raw.headers });
 
   console.log("hello");
@@ -17,8 +26,7 @@ protectedRoute.use("*", async (c, next) => {
   if (!session) {
     c.set("user", null);
     c.set("session", null);
-    await next();
-    return;
+    return c.body(null, 401);
   }
 
   c.set("user", session.user);
