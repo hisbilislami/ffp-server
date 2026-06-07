@@ -1,61 +1,29 @@
 import { Hono } from "hono";
 import { prisma } from "./utils/pg-helper";
+import { auth } from "./utils/auth";
+import { cors } from "hono/cors";
+import { publicRoute } from "./routes/public.route";
 
-const app = new Hono();
+const app = new Hono<{
+  Variables: {
+    user: typeof auth.$Infer.Session.user | null;
+    session: typeof auth.$Infer.Session.session | null;
+  };
+}>();
 
-app.get("/", (c) => {
-  return c.text("Hello Hono!");
-});
+app.use(
+  "*", // or replace with "*" to enable cors for all routes
+  cors({
+    origin: "http://localhost:3001", // replace with your origin
+    allowHeaders: ["Content-Type", "Authorization"],
+    allowMethods: ["POST", "GET", "OPTIONS"],
+    exposeHeaders: ["Content-Length"],
+    maxAge: 600,
+    credentials: true,
+  }),
+);
 
-app.get("/pg-test", async (c) => {
-  try {
-    const data = await prisma.users.findMany({
-      take: 5,
-    });
-
-    return c.json({
-      status: "success",
-      message: "database connection successfully",
-      data: data,
-    });
-  } catch (error) {
-    return c.json(
-      {
-        status: "error",
-        message: "Gagal terkoneksi ke database",
-        error: error instanceof Error ? error.message : String(error),
-      },
-      500,
-    );
-  }
-});
-
-app.get("/insert-user", async (c) => {
-  try {
-    for (let index = 0; index < 5; index++) {
-      await prisma.users.create({
-        data: {
-          username: "hisbil" + index,
-          password: "alislami",
-        },
-      });
-    }
-
-    return c.json({
-      status: "success",
-      message: "database connection successfully",
-      data: [],
-    });
-  } catch (error) {
-    return c.json(
-      {
-        status: "error",
-        message: "Gagal terkoneksi ke database",
-        error: error instanceof Error ? error.message : String(error),
-      },
-      500,
-    );
-  }
-});
+app.route("/", publicRoute);
+app.route("/api", publicRoute);
 
 export default app;
