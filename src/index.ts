@@ -24,7 +24,7 @@ app.use(
 );
 
 app.route("/", publicRoute);
-app.route("/api/auth", publicRoute);
+app.route("/auth", publicRoute);
 
 app.route("/api", protectedRoute);
 
