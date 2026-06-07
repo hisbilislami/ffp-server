@@ -24,8 +24,6 @@ app.use(
 );
 
 app.route("/", publicRoute);
-app.route("/auth", publicRoute);
-
 app.route("/api", protectedRoute);
 
 export default app;
