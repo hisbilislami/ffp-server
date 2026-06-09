@@ -1,22 +1,19 @@
 import { Hono } from "hono";
 import { auth } from "../utils/auth";
 import { prisma } from "../utils/pg-helper";
+import { usersRouter } from "../modules/users/users.route";
 
 export const protectedRoute = new Hono<{
   Variables: {
-    user: typeof auth.$Infer.Session.user | null;
-    session: typeof auth.$Infer.Session.session | null;
+    user: typeof auth.$Infer.Session.user;
+    session: typeof auth.$Infer.Session.session;
   };
 }>();
 
 protectedRoute.use("*", async (c, next) => {
   const session = await auth.api.getSession({ headers: c.req.raw.headers });
 
-  console.log("hello");
-
   if (!session) {
-    c.set("user", null);
-    c.set("session", null);
     return c.body(null, 401);
   }
 
@@ -57,3 +54,5 @@ protectedRoute.get("/pg-test", async (c) => {
     );
   }
 });
+
+protectedRoute.route("/users", usersRouter);

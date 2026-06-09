@@ -4,12 +4,7 @@ import { cors } from "hono/cors";
 import { publicRoute } from "./routes/public.route";
 import { protectedRoute } from "./routes/protected.route";
 
-const app = new Hono<{
-  Variables: {
-    user: typeof auth.$Infer.Session.user | null;
-    session: typeof auth.$Infer.Session.session | null;
-  };
-}>();
+const app = new Hono();
 
 app.use(
   "*", // or replace with "*" to enable cors for all routes
@@ -23,7 +18,8 @@ app.use(
   }),
 );
 
-app.route("/", publicRoute);
-app.route("/api", protectedRoute);
+const apiRoutes = app.route("/", publicRoute).route("/api", protectedRoute);
+
+export type AppType = typeof apiRoutes;
 
 export default app;

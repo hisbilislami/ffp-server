@@ -5,11 +5,14 @@
   },
   "dependencies": {
     "@better-auth/prisma-adapter": "^1.6.11",
+    "@hono/zod-openapi": "^1.4.0",
+    "@hono/zod-validator": "^0.8.0",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "better-auth": "^1.6.11",
-    "hono": "^4.12.19",
-    "pg": "^8.20.0"
+    "hono": "^4.12.25",
+    "pg": "^8.20.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/bun": "latest",
