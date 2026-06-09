@@ -1,5 +1,4 @@
 import { Hono } from "hono";
-import { auth } from "./utils/auth";
 import { cors } from "hono/cors";
 import { publicRoute } from "./routes/public.route";
 import { protectedRoute } from "./routes/protected.route";
