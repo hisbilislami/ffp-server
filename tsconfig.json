@@ -5,9 +5,6 @@
     "esModuleInterop": true,
     "strict": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
-    "composite": true,
-    "declaration": true,
-    "declarationMap": true
+    "jsxImportSource": "hono/jsx"
   }
 }
