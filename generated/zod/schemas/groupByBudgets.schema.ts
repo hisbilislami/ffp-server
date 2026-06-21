@@ -1,0 +1,15 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { BudgetsWhereInputObjectSchema as BudgetsWhereInputObjectSchema } from './objects/BudgetsWhereInput.schema';
+import { BudgetsOrderByWithAggregationInputObjectSchema as BudgetsOrderByWithAggregationInputObjectSchema } from './objects/BudgetsOrderByWithAggregationInput.schema';
+import { BudgetsScalarWhereWithAggregatesInputObjectSchema as BudgetsScalarWhereWithAggregatesInputObjectSchema } from './objects/BudgetsScalarWhereWithAggregatesInput.schema';
+import { BudgetsScalarFieldEnumSchema } from './enums/BudgetsScalarFieldEnum.schema';
+import { BudgetsCountAggregateInputObjectSchema as BudgetsCountAggregateInputObjectSchema } from './objects/BudgetsCountAggregateInput.schema';
+import { BudgetsMinAggregateInputObjectSchema as BudgetsMinAggregateInputObjectSchema } from './objects/BudgetsMinAggregateInput.schema';
+import { BudgetsMaxAggregateInputObjectSchema as BudgetsMaxAggregateInputObjectSchema } from './objects/BudgetsMaxAggregateInput.schema';
+import { BudgetsAvgAggregateInputObjectSchema as BudgetsAvgAggregateInputObjectSchema } from './objects/BudgetsAvgAggregateInput.schema';
+import { BudgetsSumAggregateInputObjectSchema as BudgetsSumAggregateInputObjectSchema } from './objects/BudgetsSumAggregateInput.schema';
+
+export const BudgetsGroupBySchema: z.ZodType<Prisma.BudgetsGroupByArgs> = z.object({ where: BudgetsWhereInputObjectSchema.optional(), orderBy: z.union([BudgetsOrderByWithAggregationInputObjectSchema, BudgetsOrderByWithAggregationInputObjectSchema.array()]).optional(), having: BudgetsScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(BudgetsScalarFieldEnumSchema), _count: z.union([ z.literal(true), BudgetsCountAggregateInputObjectSchema ]).optional(), _min: BudgetsMinAggregateInputObjectSchema.optional(), _max: BudgetsMaxAggregateInputObjectSchema.optional(), _avg: BudgetsAvgAggregateInputObjectSchema.optional(), _sum: BudgetsSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.BudgetsGroupByArgs>;
+
+export const BudgetsGroupByZodSchema = z.object({ where: BudgetsWhereInputObjectSchema.optional(), orderBy: z.union([BudgetsOrderByWithAggregationInputObjectSchema, BudgetsOrderByWithAggregationInputObjectSchema.array()]).optional(), having: BudgetsScalarWhereWithAggregatesInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), by: z.array(BudgetsScalarFieldEnumSchema), _count: z.union([ z.literal(true), BudgetsCountAggregateInputObjectSchema ]).optional(), _min: BudgetsMinAggregateInputObjectSchema.optional(), _max: BudgetsMaxAggregateInputObjectSchema.optional(), _avg: BudgetsAvgAggregateInputObjectSchema.optional(), _sum: BudgetsSumAggregateInputObjectSchema.optional() }).strict();

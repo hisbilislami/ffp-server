@@ -2,8 +2,9 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { publicRoute } from "./routes/public.route";
 import { protectedRoute } from "./routes/protected.route";
+import { OpenAPIHono } from "@hono/zod-openapi";
 
-const app = new Hono();
+const app = new OpenAPIHono();
 
 app.use(
   "*", // or replace with "*" to enable cors for all routes
@@ -16,6 +17,14 @@ app.use(
     credentials: true,
   }),
 );
+
+app.doc("/doc", {
+  openapi: "3.0.0",
+  info: {
+    title: "FFP server API",
+    version: "0.0.1",
+  },
+});
 
 const apiRoutes = app.route("/", publicRoute).route("/api", protectedRoute);
 

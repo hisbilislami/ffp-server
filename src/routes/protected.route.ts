@@ -1,9 +1,9 @@
-import { Hono } from "hono";
 import { auth } from "../utils/auth";
 import { prisma } from "../utils/pg-helper";
 import { usersRouter } from "../modules/users/users.route";
+import { OpenAPIHono } from "@hono/zod-openapi";
 
-export const protectedRoute = new Hono<{
+export const protectedRoute = new OpenAPIHono<{
   Variables: {
     user: typeof auth.$Infer.Session.user;
     session: typeof auth.$Infer.Session.session;

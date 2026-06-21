@@ -1,0 +1,14 @@
+import type { Prisma } from '../../prisma/client';
+import * as z from 'zod';
+import { BudgetsOrderByWithRelationInputObjectSchema as BudgetsOrderByWithRelationInputObjectSchema } from './objects/BudgetsOrderByWithRelationInput.schema';
+import { BudgetsWhereInputObjectSchema as BudgetsWhereInputObjectSchema } from './objects/BudgetsWhereInput.schema';
+import { BudgetsWhereUniqueInputObjectSchema as BudgetsWhereUniqueInputObjectSchema } from './objects/BudgetsWhereUniqueInput.schema';
+import { BudgetsCountAggregateInputObjectSchema as BudgetsCountAggregateInputObjectSchema } from './objects/BudgetsCountAggregateInput.schema';
+import { BudgetsMinAggregateInputObjectSchema as BudgetsMinAggregateInputObjectSchema } from './objects/BudgetsMinAggregateInput.schema';
+import { BudgetsMaxAggregateInputObjectSchema as BudgetsMaxAggregateInputObjectSchema } from './objects/BudgetsMaxAggregateInput.schema';
+import { BudgetsAvgAggregateInputObjectSchema as BudgetsAvgAggregateInputObjectSchema } from './objects/BudgetsAvgAggregateInput.schema';
+import { BudgetsSumAggregateInputObjectSchema as BudgetsSumAggregateInputObjectSchema } from './objects/BudgetsSumAggregateInput.schema';
+
+export const BudgetsAggregateSchema: z.ZodType<Prisma.BudgetsAggregateArgs> = z.object({ orderBy: z.union([BudgetsOrderByWithRelationInputObjectSchema, BudgetsOrderByWithRelationInputObjectSchema.array()]).optional(), where: BudgetsWhereInputObjectSchema.optional(), cursor: BudgetsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), BudgetsCountAggregateInputObjectSchema ]).optional(), _min: BudgetsMinAggregateInputObjectSchema.optional(), _max: BudgetsMaxAggregateInputObjectSchema.optional(), _avg: BudgetsAvgAggregateInputObjectSchema.optional(), _sum: BudgetsSumAggregateInputObjectSchema.optional() }).strict() as unknown as z.ZodType<Prisma.BudgetsAggregateArgs>;
+
+export const BudgetsAggregateZodSchema = z.object({ orderBy: z.union([BudgetsOrderByWithRelationInputObjectSchema, BudgetsOrderByWithRelationInputObjectSchema.array()]).optional(), where: BudgetsWhereInputObjectSchema.optional(), cursor: BudgetsWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), _count: z.union([ z.literal(true), BudgetsCountAggregateInputObjectSchema ]).optional(), _min: BudgetsMinAggregateInputObjectSchema.optional(), _max: BudgetsMaxAggregateInputObjectSchema.optional(), _avg: BudgetsAvgAggregateInputObjectSchema.optional(), _sum: BudgetsSumAggregateInputObjectSchema.optional() }).strict();
