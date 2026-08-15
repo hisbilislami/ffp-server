@@ -24,9 +24,19 @@ export const prisma = basePrisma.$extends({
         },
       ) {
         const page = args.page ?? 1;
-        const limit = args.limit ?? 10;
+        const requestedLimit = args.limit ?? 10;
 
+        if (page < 1) {
+          throw new Error("Pagination page must be greater than 0.");
+        }
+
+        if (requestedLimit < 1) {
+          throw new Error("Pagination limit must be greater than 0.");
+        }
+
+        const limit = Math.min(requestedLimit, 50);
         const skip = (page - 1) * limit;
+
         const take = limit;
 
         const { page: _, limit: __, ...prismaArgs } = args;

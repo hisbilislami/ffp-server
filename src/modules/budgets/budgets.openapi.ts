@@ -24,7 +24,11 @@ export const getAllBudgets = createRoute({
   },
   responses: {
     ...createPaginatedResponse(budgetResponseSchema),
-    ...errorResponses(HttpStatusCodes.UNAUTHORIZED),
+    ...errorResponses(
+      HttpStatusCodes.UNAUTHORIZED,
+      HttpStatusCodes.BAD_REQUEST,
+      HttpStatusCodes.INTERNAL_SERVER_ERROR,
+    ),
   },
 });
 
@@ -47,7 +51,6 @@ export const createBudget = createRoute({
     ...errorResponses(
       HttpStatusCodes.BAD_REQUEST,
       HttpStatusCodes.UNAUTHORIZED,
-      HttpStatusCodes.UNPROCESSABLE_ENTITY,
       HttpStatusCodes.INTERNAL_SERVER_ERROR,
     ),
   },
@@ -72,7 +75,6 @@ export const updateBudget = createRoute({
     ...errorResponses(
       HttpStatusCodes.BAD_REQUEST,
       HttpStatusCodes.UNAUTHORIZED,
-      HttpStatusCodes.UNPROCESSABLE_ENTITY,
       HttpStatusCodes.INTERNAL_SERVER_ERROR,
     ),
   },

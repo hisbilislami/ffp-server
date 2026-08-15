@@ -2,6 +2,7 @@ import { auth } from "../utils/auth";
 import { prisma } from "../utils/pg-helper";
 import { usersRouter } from "../modules/users/users.route";
 import { OpenAPIHono } from "@hono/zod-openapi";
+import { budgetsRouter } from "../modules/budgets/budgets.route";
 
 export const protectedRoute = new OpenAPIHono<{
   Variables: {
@@ -56,3 +57,4 @@ protectedRoute.get("/pg-test", async (c) => {
 });
 
 protectedRoute.route("/users", usersRouter);
+protectedRoute.route("/budgets", budgetsRouter);
