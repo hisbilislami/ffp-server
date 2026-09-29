@@ -14,7 +14,7 @@
 import { Hono } from "hono";
 import { auth } from "../utils/auth";
 
-const authHandler = auth.handler;
+const hasAuthHandler = "handler" in auth;
 
 export const publicRoute = new Hono();
 
