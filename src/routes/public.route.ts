@@ -23,7 +23,5 @@ publicRoute.get("/", (c) => {
 publicRoute.all("/auth/*", async (c) => {
   console.log("AUTH ROUTE START");
 
-  return new Response("AUTH ROUTE OK", {
-    status: 200,
-  });
+  return auth.handler(c.req.raw);
 });
