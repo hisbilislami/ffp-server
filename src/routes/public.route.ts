@@ -21,13 +21,5 @@ publicRoute.get("/", (c) => {
 });
 
 publicRoute.all("/auth/*", (c) => {
-  const runtime = {
-    bun: typeof Bun,
-    node: typeof process,
-    env: process.env.NODE_ENV,
-  };
-
-  console.log("RUNTIME:", runtime);
-
-  return c.json(runtime);
+  return auth.handler(c.req.raw);
 });
