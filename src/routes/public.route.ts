@@ -11,6 +11,7 @@
 //   return auth.handler(c.req.raw);
 // });
 import { Hono } from "hono";
+import { auth } from "../utils/auth";
 
 export const publicRoute = new Hono();
 
