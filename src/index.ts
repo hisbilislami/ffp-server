@@ -33,6 +33,8 @@ app.doc("/doc", {
   },
 });
 
+console.log("runtime", process.versions.bun);
+
 const apiRoutes = app.route("/", publicRoute).route("/api", protectedRoute);
 
 export type AppType = typeof apiRoutes;
