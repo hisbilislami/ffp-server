@@ -20,5 +20,5 @@ publicRoute.get("/", (c) => {
 });
 
 publicRoute.all("/auth/*", (c) => {
-  return auth.handler(c.req.raw);
+  return c.text("Auth route works!");
 });
