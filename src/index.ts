@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { cors } from "hono/cors";
+import { publicRoute } from "./routes/public.route";
 
 const app = new OpenAPIHono();
 
@@ -23,8 +24,12 @@ app.use(
   }),
 );
 
+const apiRoutes = app.route("/", publicRoute);
+
 app.get("/", (c) => {
   return c.text("Hello FFP!");
 });
+
+export type AppType = typeof apiRoutes;
 
 export default app;
