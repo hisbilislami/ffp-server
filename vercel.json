@@ -1,5 +1,3 @@
 {
-  "build": {
-    "src": "src/index.ts"
-  }
+  "bunVersion": "1.x"
 }
