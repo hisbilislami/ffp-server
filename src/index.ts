@@ -40,8 +40,4 @@ app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
-app.all("/auth/*", (c) => {
-  return auth.handler(c.req.raw);
-});
-
 export default app;
