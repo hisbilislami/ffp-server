@@ -33,7 +33,6 @@
 // export default apiRoutes;
 import { Hono } from "hono";
 import { auth } from "./utils/auth";
-import { publicRoute } from "./routes/public.route";
 
 const app = new Hono();
 
@@ -41,6 +40,14 @@ app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
 
-app.route("/", publicRoute);
+app.get("/auth-test", (c) => {
+  return c.json({
+    auth: typeof auth,
+    runtime: {
+      bun: typeof Bun,
+      node: typeof process,
+    },
+  });
+});
 
 export default app;
