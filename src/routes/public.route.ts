@@ -10,8 +10,11 @@
 // publicRoute.all("/auth/*", (c) => {
 //   return auth.handler(c.req.raw);
 // });
+
 import { Hono } from "hono";
 import { auth } from "../utils/auth";
+
+const authHandler = auth.handler;
 
 export const publicRoute = new Hono();
 
@@ -20,6 +23,5 @@ publicRoute.get("/", (c) => {
 });
 
 publicRoute.all("/auth/*", (c) => {
-  const handler = auth.handler;
-  return c.text("Auth handler exists!");
+  return c.text("Auth route works!");
 });
