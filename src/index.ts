@@ -30,6 +30,4 @@ app.get("/", (c) => {
   return c.text("Hello FFP!");
 });
 
-export type AppType = typeof apiRoutes;
-
-export default app;
+export default apiRoutes;
