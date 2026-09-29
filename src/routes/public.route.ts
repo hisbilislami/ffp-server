@@ -21,6 +21,13 @@ publicRoute.get("/", (c) => {
 });
 
 publicRoute.all("/auth/*", (c) => {
-  const handler = auth.handler;
-  return c.text("Auth handler exists!");
+  const runtime = {
+    bun: typeof Bun,
+    node: typeof process,
+    env: process.env.NODE_ENV,
+  };
+
+  console.log("RUNTIME:", runtime);
+
+  return c.json(runtime);
 });
