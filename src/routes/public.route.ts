@@ -14,8 +14,6 @@
 import { Hono } from "hono";
 import { auth } from "../utils/auth";
 
-const hasAuthHandler = "handler" in auth;
-
 export const publicRoute = new Hono();
 
 publicRoute.get("/", (c) => {
@@ -23,5 +21,6 @@ publicRoute.get("/", (c) => {
 });
 
 publicRoute.all("/auth/*", (c) => {
-  return c.text("Auth route works!");
+  const handler = auth.handler;
+  return c.text("Auth handler exists!");
 });
