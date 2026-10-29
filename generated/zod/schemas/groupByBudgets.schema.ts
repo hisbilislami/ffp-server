@@ -1,4 +1,4 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { BudgetsWhereInputObjectSchema as BudgetsWhereInputObjectSchema } from './objects/BudgetsWhereInput.schema';
 import { BudgetsOrderByWithAggregationInputObjectSchema as BudgetsOrderByWithAggregationInputObjectSchema } from './objects/BudgetsOrderByWithAggregationInput.schema';

@@ -614,7 +614,6 @@ export type TransactionsCreateOrConnectWithoutBudgetInput = {
 
 export type TransactionsCreateManyBudgetInputEnvelope = {
   data: Prisma.TransactionsCreateManyBudgetInput | Prisma.TransactionsCreateManyBudgetInput[]
-  skipDuplicates?: boolean
 }
 
 export type TransactionsUpsertWithWhereUniqueWithoutBudgetInput = {
@@ -1459,7 +1458,6 @@ export type TransactionsCreateManyArgs<ExtArgs extends runtime.Types.Extensions.
    * The data used to create many Transactions.
    */
   data: Prisma.TransactionsCreateManyInput | Prisma.TransactionsCreateManyInput[]
-  skipDuplicates?: boolean
 }
 
 /**
@@ -1478,7 +1476,6 @@ export type TransactionsCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Ex
    * The data used to create many Transactions.
    */
   data: Prisma.TransactionsCreateManyInput | Prisma.TransactionsCreateManyInput[]
-  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */

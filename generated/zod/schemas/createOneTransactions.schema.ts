@@ -1,4 +1,4 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { TransactionsSelectObjectSchema as TransactionsSelectObjectSchema } from './objects/TransactionsSelect.schema';
 import { TransactionsIncludeObjectSchema as TransactionsIncludeObjectSchema } from './objects/TransactionsInclude.schema';

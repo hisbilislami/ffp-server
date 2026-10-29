@@ -1,4 +1,4 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { SessionWhereInputObjectSchema as SessionWhereInputObjectSchema } from './objects/SessionWhereInput.schema';
 import { SessionOrderByWithAggregationInputObjectSchema as SessionOrderByWithAggregationInputObjectSchema } from './objects/SessionOrderByWithAggregationInput.schema';

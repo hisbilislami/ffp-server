@@ -1,4 +1,4 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { AccountOrderByWithRelationInputObjectSchema as AccountOrderByWithRelationInputObjectSchema } from './objects/AccountOrderByWithRelationInput.schema';
 import { AccountWhereInputObjectSchema as AccountWhereInputObjectSchema } from './objects/AccountWhereInput.schema';

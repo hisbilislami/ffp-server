@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
+import type { Prisma } from '../../../prisma/browser';
 import { SessionUncheckedCreateNestedManyWithoutUserInputObjectSchema as SessionUncheckedCreateNestedManyWithoutUserInputObjectSchema } from './SessionUncheckedCreateNestedManyWithoutUserInput.schema';
 import { AccountUncheckedCreateNestedManyWithoutUserInputObjectSchema as AccountUncheckedCreateNestedManyWithoutUserInputObjectSchema } from './AccountUncheckedCreateNestedManyWithoutUserInput.schema';
 import { BudgetsUncheckedCreateNestedManyWithoutUserInputObjectSchema as BudgetsUncheckedCreateNestedManyWithoutUserInputObjectSchema } from './BudgetsUncheckedCreateNestedManyWithoutUserInput.schema'

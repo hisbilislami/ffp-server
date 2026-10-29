@@ -1,10 +1,10 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
+import type { Prisma } from '../../../prisma/browser';
 import { TransactionsUncheckedCreateNestedManyWithoutBudgetInputObjectSchema as TransactionsUncheckedCreateNestedManyWithoutBudgetInputObjectSchema } from './TransactionsUncheckedCreateNestedManyWithoutBudgetInput.schema'
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  name: z.string().max(255),
+  name: z.string(),
   periodStart: z.coerce.date(),
   periodEnd: z.coerce.date(),
   userId: z.string(),

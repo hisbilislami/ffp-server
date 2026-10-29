@@ -1,5 +1,4 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
 import { BudgetsSelectObjectSchema as BudgetsSelectObjectSchema } from './BudgetsSelect.schema';
 import { BudgetsIncludeObjectSchema as BudgetsIncludeObjectSchema } from './BudgetsInclude.schema'
 

@@ -1,9 +1,9 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
+import type { Prisma } from '../../../prisma/browser';
 import { TransactionsCreateNestedManyWithoutBudgetInputObjectSchema as TransactionsCreateNestedManyWithoutBudgetInputObjectSchema } from './TransactionsCreateNestedManyWithoutBudgetInput.schema'
 
 const makeSchema = () => z.object({
-  name: z.string().max(255),
+  name: z.string(),
   periodStart: z.coerce.date(),
   periodEnd: z.coerce.date(),
   createdAt: z.coerce.date().optional(),

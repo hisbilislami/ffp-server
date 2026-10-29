@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { Prisma } from '../../../prisma/client';
+import { Prisma } from '../../../prisma/browser';
 import { IntWithAggregatesFilterObjectSchema as IntWithAggregatesFilterObjectSchema } from './IntWithAggregatesFilter.schema';
 import { StringNullableWithAggregatesFilterObjectSchema as StringNullableWithAggregatesFilterObjectSchema } from './StringNullableWithAggregatesFilter.schema';
 import { DecimalWithAggregatesFilterObjectSchema as DecimalWithAggregatesFilterObjectSchema } from './DecimalWithAggregatesFilter.schema';
@@ -14,11 +14,11 @@ const transactionsscalarwherewithaggregatesinputSchema = z.object({
   NOT: z.union([z.lazy(() => TransactionsScalarWhereWithAggregatesInputObjectSchema), z.lazy(() => TransactionsScalarWhereWithAggregatesInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
   budgetId: z.union([z.lazy(() => IntWithAggregatesFilterObjectSchema), z.number().int()]).optional(),
-  name: z.union([z.lazy(() => StringNullableWithAggregatesFilterObjectSchema), z.string().max(255)]).optional().nullable(),
+  name: z.union([z.lazy(() => StringNullableWithAggregatesFilterObjectSchema), z.string()]).optional().nullable(),
   estimatePrice: z.union([z.lazy(() => DecimalWithAggregatesFilterObjectSchema), z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'estimatePrice' must be a Decimal",
@@ -26,7 +26,7 @@ const transactionsscalarwherewithaggregatesinputSchema = z.object({
   realPrice: z.union([z.lazy(() => DecimalWithAggregatesFilterObjectSchema), z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'realPrice' must be a Decimal",
@@ -34,7 +34,7 @@ const transactionsscalarwherewithaggregatesinputSchema = z.object({
   diffPrice: z.union([z.lazy(() => DecimalNullableWithAggregatesFilterObjectSchema), z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'diffPrice' must be a Decimal",

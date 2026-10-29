@@ -1,5 +1,4 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
 import { AccountSelectObjectSchema as AccountSelectObjectSchema } from './AccountSelect.schema';
 import { AccountIncludeObjectSchema as AccountIncludeObjectSchema } from './AccountInclude.schema'
 

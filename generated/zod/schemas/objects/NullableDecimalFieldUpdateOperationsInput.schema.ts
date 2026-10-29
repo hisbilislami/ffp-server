@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { Prisma } from '../../../prisma/client';
+import { Prisma } from '../../../prisma/browser';
 
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
@@ -7,7 +7,7 @@ const makeSchema = () => z.object({
   set: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'set' must be a Decimal",
@@ -15,7 +15,7 @@ const makeSchema = () => z.object({
   increment: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'increment' must be a Decimal",
@@ -23,7 +23,7 @@ const makeSchema = () => z.object({
   decrement: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'decrement' must be a Decimal",
@@ -31,7 +31,7 @@ const makeSchema = () => z.object({
   multiply: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'multiply' must be a Decimal",
@@ -39,7 +39,7 @@ const makeSchema = () => z.object({
   divide: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'divide' must be a Decimal",

@@ -1,10 +1,14 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { UserIncludeObjectSchema as UserIncludeObjectSchema } from './objects/UserInclude.schema';
 import { UserOrderByWithRelationInputObjectSchema as UserOrderByWithRelationInputObjectSchema } from './objects/UserOrderByWithRelationInput.schema';
 import { UserWhereInputObjectSchema as UserWhereInputObjectSchema } from './objects/UserWhereInput.schema';
 import { UserWhereUniqueInputObjectSchema as UserWhereUniqueInputObjectSchema } from './objects/UserWhereUniqueInput.schema';
 import { UserScalarFieldEnumSchema } from './enums/UserScalarFieldEnum.schema';
+import { SessionFindManySchema } from './findManySession.schema';
+import { AccountFindManySchema } from './findManyAccount.schema';
+import { BudgetsFindManySchema } from './findManyBudgets.schema';
+import { UserCountOutputTypeArgsObjectSchema as UserCountOutputTypeArgsObjectSchema } from './objects/UserCountOutputTypeArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
@@ -17,10 +21,10 @@ export const UserFindFirstOrThrowSelectSchema: z.ZodType<Prisma.UserSelect> = z.
     image: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    sessions: z.boolean().optional(),
-    accounts: z.boolean().optional(),
-    Budgets: z.boolean().optional(),
-    _count: z.boolean().optional()
+    sessions: z.union([z.boolean(), z.lazy(() => SessionFindManySchema)]).optional(),
+    accounts: z.union([z.boolean(), z.lazy(() => AccountFindManySchema)]).optional(),
+    Budgets: z.union([z.boolean(), z.lazy(() => BudgetsFindManySchema)]).optional(),
+    _count: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeArgsObjectSchema)]).optional()
   }).strict() as unknown as z.ZodType<Prisma.UserSelect>;
 
 export const UserFindFirstOrThrowSelectZodSchema = z.object({
@@ -31,10 +35,10 @@ export const UserFindFirstOrThrowSelectZodSchema = z.object({
     image: z.boolean().optional(),
     createdAt: z.boolean().optional(),
     updatedAt: z.boolean().optional(),
-    sessions: z.boolean().optional(),
-    accounts: z.boolean().optional(),
-    Budgets: z.boolean().optional(),
-    _count: z.boolean().optional()
+    sessions: z.union([z.boolean(), z.lazy(() => SessionFindManySchema)]).optional(),
+    accounts: z.union([z.boolean(), z.lazy(() => AccountFindManySchema)]).optional(),
+    Budgets: z.union([z.boolean(), z.lazy(() => BudgetsFindManySchema)]).optional(),
+    _count: z.union([z.boolean(), z.lazy(() => UserCountOutputTypeArgsObjectSchema)]).optional()
   }).strict();
 
 export const UserFindFirstOrThrowSchema: z.ZodType<Prisma.UserFindFirstOrThrowArgs> = z.object({ select: UserFindFirstOrThrowSelectSchema.optional(), include: z.lazy(() => UserIncludeObjectSchema.optional()), orderBy: z.union([UserOrderByWithRelationInputObjectSchema, UserOrderByWithRelationInputObjectSchema.array()]).optional(), where: UserWhereInputObjectSchema.optional(), cursor: UserWhereUniqueInputObjectSchema.optional(), take: z.number().optional(), skip: z.number().optional(), distinct: z.union([UserScalarFieldEnumSchema, UserScalarFieldEnumSchema.array()]).optional() }).strict() as unknown as z.ZodType<Prisma.UserFindFirstOrThrowArgs>;

@@ -1,17 +1,18 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { TransactionsIncludeObjectSchema as TransactionsIncludeObjectSchema } from './objects/TransactionsInclude.schema';
 import { TransactionsOrderByWithRelationInputObjectSchema as TransactionsOrderByWithRelationInputObjectSchema } from './objects/TransactionsOrderByWithRelationInput.schema';
 import { TransactionsWhereInputObjectSchema as TransactionsWhereInputObjectSchema } from './objects/TransactionsWhereInput.schema';
 import { TransactionsWhereUniqueInputObjectSchema as TransactionsWhereUniqueInputObjectSchema } from './objects/TransactionsWhereUniqueInput.schema';
 import { TransactionsScalarFieldEnumSchema } from './enums/TransactionsScalarFieldEnum.schema';
+import { BudgetsArgsObjectSchema as BudgetsArgsObjectSchema } from './objects/BudgetsArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
 
 export const TransactionsFindManySelectSchema: z.ZodType<Prisma.TransactionsSelect> = z.object({
     id: z.boolean().optional(),
-    budget: z.boolean().optional(),
+    budget: z.union([z.boolean(), z.lazy(() => BudgetsArgsObjectSchema)]).optional(),
     budgetId: z.boolean().optional(),
     name: z.boolean().optional(),
     estimatePrice: z.boolean().optional(),
@@ -26,7 +27,7 @@ export const TransactionsFindManySelectSchema: z.ZodType<Prisma.TransactionsSele
 
 export const TransactionsFindManySelectZodSchema = z.object({
     id: z.boolean().optional(),
-    budget: z.boolean().optional(),
+    budget: z.union([z.boolean(), z.lazy(() => BudgetsArgsObjectSchema)]).optional(),
     budgetId: z.boolean().optional(),
     name: z.boolean().optional(),
     estimatePrice: z.boolean().optional(),

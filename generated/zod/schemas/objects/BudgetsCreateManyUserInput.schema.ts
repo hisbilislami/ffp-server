@@ -1,10 +1,10 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
+import type { Prisma } from '../../../prisma/browser';
 
 
 const makeSchema = () => z.object({
   id: z.number().int().optional(),
-  name: z.string().max(255),
+  name: z.string(),
   periodStart: z.coerce.date(),
   periodEnd: z.coerce.date(),
   createdAt: z.coerce.date().optional(),

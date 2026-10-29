@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { Prisma } from '../../../prisma/client';
+import { Prisma } from '../../../prisma/browser';
 import { NullableStringFieldUpdateOperationsInputObjectSchema as NullableStringFieldUpdateOperationsInputObjectSchema } from './NullableStringFieldUpdateOperationsInput.schema';
 import { DecimalFieldUpdateOperationsInputObjectSchema as DecimalFieldUpdateOperationsInputObjectSchema } from './DecimalFieldUpdateOperationsInput.schema';
 import { NullableDecimalFieldUpdateOperationsInputObjectSchema as NullableDecimalFieldUpdateOperationsInputObjectSchema } from './NullableDecimalFieldUpdateOperationsInput.schema';
@@ -10,11 +10,11 @@ import { BudgetsUpdateOneRequiredWithoutTransactionsNestedInputObjectSchema as B
 
 import { DecimalJSLikeSchema, isValidDecimalInput } from '../../helpers/decimal-helpers';
 const makeSchema = () => z.object({
-  name: z.union([z.string().max(255), z.lazy(() => NullableStringFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
+  name: z.union([z.string(), z.lazy(() => NullableStringFieldUpdateOperationsInputObjectSchema)]).optional().nullable(),
   estimatePrice: z.union([z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'estimatePrice' must be a Decimal",
@@ -22,7 +22,7 @@ const makeSchema = () => z.object({
   realPrice: z.union([z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'realPrice' must be a Decimal",
@@ -30,7 +30,7 @@ const makeSchema = () => z.object({
   diffPrice: z.union([z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'diffPrice' must be a Decimal",

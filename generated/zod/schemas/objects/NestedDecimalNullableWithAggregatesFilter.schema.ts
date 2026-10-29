@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { Prisma } from '../../../prisma/client';
+import { Prisma } from '../../../prisma/browser';
 import { NestedIntNullableFilterObjectSchema as NestedIntNullableFilterObjectSchema } from './NestedIntNullableFilter.schema';
 import { NestedDecimalNullableFilterObjectSchema as NestedDecimalNullableFilterObjectSchema } from './NestedDecimalNullableFilter.schema'
 
@@ -8,7 +8,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   equals: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'equals' must be a Decimal",
@@ -16,7 +16,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   in: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'in' must be a Decimal",
@@ -24,7 +24,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   notIn: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'notIn' must be a Decimal",
@@ -32,7 +32,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   lt: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'lt' must be a Decimal",
@@ -40,7 +40,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   lte: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'lte' must be a Decimal",
@@ -48,7 +48,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   gt: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'gt' must be a Decimal",
@@ -56,7 +56,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   gte: z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'gte' must be a Decimal",
@@ -64,7 +64,7 @@ const nesteddecimalnullablewithaggregatesfilterSchema = z.object({
   not: z.union([z.union([
   z.number(),
   z.string(),
-  z.instanceof(Prisma.Decimal),
+  z.custom<InstanceType<typeof Prisma.Decimal>>((v) => Prisma.Decimal.isDecimal(v)),
   DecimalJSLikeSchema,
 ]).refine((v) => isValidDecimalInput(v), {
   message: "Field 'not' must be a Decimal",

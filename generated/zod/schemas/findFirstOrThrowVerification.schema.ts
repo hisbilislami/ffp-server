@@ -1,4 +1,4 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { VerificationOrderByWithRelationInputObjectSchema as VerificationOrderByWithRelationInputObjectSchema } from './objects/VerificationOrderByWithRelationInput.schema';
 import { VerificationWhereInputObjectSchema as VerificationWhereInputObjectSchema } from './objects/VerificationWhereInput.schema';

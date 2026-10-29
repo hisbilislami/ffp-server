@@ -4,7 +4,7 @@ export const AccountCreateResultSchema = z.object({
   accountId: z.string(),
   providerId: z.string(),
   userId: z.string(),
-  user: z.unknown(),
+  user: z.unknown().optional(),
   accessToken: z.string().optional(),
   refreshToken: z.string().optional(),
   idToken: z.string().optional(),

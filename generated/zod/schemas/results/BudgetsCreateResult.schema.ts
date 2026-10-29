@@ -4,10 +4,10 @@ export const BudgetsCreateResultSchema = z.object({
   name: z.string(),
   periodStart: z.date(),
   periodEnd: z.date(),
-  user: z.unknown(),
+  user: z.unknown().optional(),
   userId: z.string(),
   createdAt: z.date(),
   updatedAt: z.date(),
   deletedAt: z.date().optional(),
-  Transactions: z.array(z.unknown())
+  Transactions: z.array(z.unknown()).optional()
 });

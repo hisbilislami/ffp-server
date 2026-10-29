@@ -1,10 +1,11 @@
-import type { Prisma } from '../../prisma/client';
+import type { Prisma } from '../../prisma/browser';
 import * as z from 'zod';
 import { AccountIncludeObjectSchema as AccountIncludeObjectSchema } from './objects/AccountInclude.schema';
 import { AccountOrderByWithRelationInputObjectSchema as AccountOrderByWithRelationInputObjectSchema } from './objects/AccountOrderByWithRelationInput.schema';
 import { AccountWhereInputObjectSchema as AccountWhereInputObjectSchema } from './objects/AccountWhereInput.schema';
 import { AccountWhereUniqueInputObjectSchema as AccountWhereUniqueInputObjectSchema } from './objects/AccountWhereUniqueInput.schema';
 import { AccountScalarFieldEnumSchema } from './enums/AccountScalarFieldEnum.schema';
+import { UserArgsObjectSchema as UserArgsObjectSchema } from './objects/UserArgs.schema';
 
 // Select schema needs to be in file to prevent circular imports
 //------------------------------------------------------
@@ -14,7 +15,7 @@ export const AccountFindFirstSelectSchema: z.ZodType<Prisma.AccountSelect> = z.o
     accountId: z.boolean().optional(),
     providerId: z.boolean().optional(),
     userId: z.boolean().optional(),
-    user: z.boolean().optional(),
+    user: z.union([z.boolean(), z.lazy(() => UserArgsObjectSchema)]).optional(),
     accessToken: z.boolean().optional(),
     refreshToken: z.boolean().optional(),
     idToken: z.boolean().optional(),
@@ -31,7 +32,7 @@ export const AccountFindFirstSelectZodSchema = z.object({
     accountId: z.boolean().optional(),
     providerId: z.boolean().optional(),
     userId: z.boolean().optional(),
-    user: z.boolean().optional(),
+    user: z.union([z.boolean(), z.lazy(() => UserArgsObjectSchema)]).optional(),
     accessToken: z.boolean().optional(),
     refreshToken: z.boolean().optional(),
     idToken: z.boolean().optional(),

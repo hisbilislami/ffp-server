@@ -8,9 +8,9 @@ export const UserFindManyResultSchema = z.object({
   image: z.string().optional(),
   createdAt: z.date(),
   updatedAt: z.date(),
-  sessions: z.array(z.unknown()),
-  accounts: z.array(z.unknown()),
-  Budgets: z.array(z.unknown())
+  sessions: z.array(z.unknown()).optional(),
+  accounts: z.array(z.unknown()).optional(),
+  Budgets: z.array(z.unknown()).optional()
 })),
   pagination: z.object({
   page: z.number().int().min(1),

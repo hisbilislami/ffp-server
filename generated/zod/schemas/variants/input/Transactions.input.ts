@@ -10,9 +10,9 @@ export const TransactionsInputSchema = z.object({
     diffPrice: z.number().optional().nullable(),
     qty: z.number().int(),
     description: z.string().optional().nullable(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
-    deletedAt: z.date().optional().nullable()
+    createdAt: z.coerce.date(),
+    updatedAt: z.coerce.date(),
+    deletedAt: z.coerce.date().optional().nullable()
 }).strict();
 
 export type TransactionsInputType = z.infer<typeof TransactionsInputSchema>;

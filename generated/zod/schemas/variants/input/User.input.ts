@@ -6,8 +6,8 @@ export const UserInputSchema = z.object({
     email: z.string(),
     emailVerified: z.boolean(),
     image: z.string().optional().nullable(),
-    createdAt: z.date(),
-    updatedAt: z.date(),
+    createdAt: z.coerce.date(),
+    updatedAt: z.coerce.date(),
     sessions: z.array(z.unknown()),
     accounts: z.array(z.unknown()),
     Budgets: z.array(z.unknown())

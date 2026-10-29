@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
+import type { Prisma } from '../../../prisma/browser';
 import { UserUpdateWithoutBudgetsInputObjectSchema as UserUpdateWithoutBudgetsInputObjectSchema } from './UserUpdateWithoutBudgetsInput.schema';
 import { UserUncheckedUpdateWithoutBudgetsInputObjectSchema as UserUncheckedUpdateWithoutBudgetsInputObjectSchema } from './UserUncheckedUpdateWithoutBudgetsInput.schema';
 import { UserCreateWithoutBudgetsInputObjectSchema as UserCreateWithoutBudgetsInputObjectSchema } from './UserCreateWithoutBudgetsInput.schema';

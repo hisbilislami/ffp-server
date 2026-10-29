@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import type { Prisma } from '../../../prisma/client';
+import type { Prisma } from '../../../prisma/browser';
 import { IntFilterObjectSchema as IntFilterObjectSchema } from './IntFilter.schema';
 import { StringFilterObjectSchema as StringFilterObjectSchema } from './StringFilter.schema';
 import { DateTimeFilterObjectSchema as DateTimeFilterObjectSchema } from './DateTimeFilter.schema';
@@ -13,7 +13,7 @@ const budgetswhereinputSchema = z.object({
   OR: z.lazy(() => BudgetsWhereInputObjectSchema).array().optional(),
   NOT: z.union([z.lazy(() => BudgetsWhereInputObjectSchema), z.lazy(() => BudgetsWhereInputObjectSchema).array()]).optional(),
   id: z.union([z.lazy(() => IntFilterObjectSchema), z.number().int()]).optional(),
-  name: z.union([z.lazy(() => StringFilterObjectSchema), z.string().max(255)]).optional(),
+  name: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),
   periodStart: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   periodEnd: z.union([z.lazy(() => DateTimeFilterObjectSchema), z.coerce.date()]).optional(),
   userId: z.union([z.lazy(() => StringFilterObjectSchema), z.string()]).optional(),

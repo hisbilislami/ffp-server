@@ -1,6 +1,6 @@
 import * as z from 'zod';
 
-import { Prisma } from '../../prisma/client';
+import { Prisma } from '../../prisma/browser';
 
 // DECIMAL HELPERS
 //------------------------------------------------------
@@ -21,8 +21,10 @@ export const isValidDecimalInput = (
 ): v is string | number | Prisma.DecimalJsLike => {
   if (v === undefined || v === null) return false;
   return (
-    // Explicit instance checks first
-    v instanceof Prisma.Decimal ||
+    // Explicit instance checks first. Decimal.isDecimal is used instead of instanceof because
+    // the browser and server Prisma runtimes bundle separate Decimal class copies, so
+    // instanceof fails across copies while the structural isDecimal check is cross-copy safe.
+    Prisma.Decimal.isDecimal(v) ||
     // If Decimal.js is present and imported by the generator, this symbol exists at runtime
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore - Decimal may be undefined when not installed; codegen controls the import
