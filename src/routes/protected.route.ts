@@ -1,8 +1,8 @@
 import { auth } from "../utils/auth";
-import { prisma } from "../utils/pg-helper";
 import { usersRouter } from "../modules/users/users.route";
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { budgetsRouter } from "../modules/budgets/budgets.route";
+import { prisma } from "../utils/sqlite-helper";
 
 export const protectedRoute = new OpenAPIHono<{
   Variables: {

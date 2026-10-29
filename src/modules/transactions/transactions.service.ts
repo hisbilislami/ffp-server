@@ -1,5 +1,5 @@
 import { Prisma } from "../../../generated/prisma/client";
-import { prisma } from "../../utils/pg-helper";
+import { prisma } from "../../utils/sqlite-helper";
 import {
   CreateTransactionInput,
   TransactionPaginationInput,
@@ -15,7 +15,9 @@ export const transactionsService = {
     };
 
     if (search) {
-      whereCondition.OR = [{ name: { contains: search, mode: "insensitive" as const } }];
+      whereCondition.OR = [
+        { name: { contains: search, mode: "insensitive" as const } },
+      ];
     }
 
     return prisma.transactions.paginate({

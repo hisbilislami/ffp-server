@@ -1,6 +1,6 @@
 import { prismaAdapter } from "@better-auth/prisma-adapter";
 import { betterAuth } from "better-auth";
-import { prisma } from "./pg-helper";
+import { prisma } from "./sqlite-helper";
 import { bearer } from "better-auth/plugins";
 
 const allowedOrigins = (
@@ -12,7 +12,7 @@ const allowedOrigins = (
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
-    provider: "postgresql",
+    provider: "sqlite",
   }),
   baseURL: process.env.BETTER_AUTH_URL ?? "http://localhost:3000/auth",
   trustedOrigins: allowedOrigins,

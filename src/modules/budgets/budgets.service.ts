@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { Prisma } from "../../../generated/prisma/client";
-import { prisma } from "../../utils/pg-helper";
+import { prisma } from "../../utils/sqlite-helper";
 import {
   BudgetPaginationInput,
   CreateBudgetInput,

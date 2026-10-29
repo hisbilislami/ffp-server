@@ -14,6 +14,7 @@
         "better-auth": "^1.6.11",
         "dayjs": "^1.11.21",
         "hono": "^4.12.25",
+        "prisma-sqlite-bun-adapter": "^1.0.0-alpha1",
         "stoker": "^2.0.1",
         "zod": "^4.4.3",
       },
@@ -544,6 +545,8 @@
     "prettier": ["prettier@3.9.9", "", { "bin": { "prettier": "bin/prettier.cjs" } }, "sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg=="],
 
     "prisma": ["prisma@7.10.0", "", { "dependencies": { "@prisma/config": "7.10.0", "@prisma/dev": "0.24.17", "@prisma/engines": "7.10.0", "@prisma/studio-core": "0.33.0", "mysql2": "3.15.3", "postgres": "3.4.7" }, "peerDependencies": { "better-sqlite3": ">=9.0.0", "typescript": ">=5.4.0" }, "optionalPeers": ["better-sqlite3", "typescript"], "bin": { "prisma": "build/index.js" } }, "sha512-o0ornyJOWgygVAzGCpr8PdXV8EJLHyVGDDUr/voBQt8Azzw8cYTByzzPGcA/m4tCkPcnJA8raEOv2CslsKhPEw=="],
+
+    "prisma-sqlite-bun-adapter": ["prisma-sqlite-bun-adapter@1.0.0-alpha1", "", { "dependencies": { "@prisma/driver-adapter-utils": "^7.9.1" }, "peerDependencies": { "@prisma/client": "^7" } }, "sha512-FzTEGtpPsPqoiLLRMn0JafIVtMcMc30zEGxsKZ4IxM8G3pUekzHefckALvuU4OInGetXVXvUoIn9SBsea3BQnA=="],
 
     "prisma-zod-generator": ["prisma-zod-generator@2.9.0", "", { "dependencies": { "@prisma/client": "^7.0.0", "@prisma/generator-helper": "^7.0.0", "@prisma/internals": "^7.0.0", "@types/cors": "^2.8.19", "@types/express": "^5.0.5", "ajv": "^8.17.1", "ajv-formats": "^3.0.1", "cors": "^2.8.5", "dotenv": "^17.2.3", "express": "^5.1.0", "js-yaml": "^4.1.1", "node-fetch": "^3.3.2", "prettier": "^3.6.2", "tslib": "^2.8.1" }, "peerDependencies": { "zod": ">=3.25.0 <5" }, "bin": { "pzg-pro": "lib/cli/pzg-pro.js", "prisma-zod-generator": "lib/generator.js" } }, "sha512-eUOaJTFitFtJO/38EkrRXsQNaLlp6bimNHbaqbSTm8q6uJ5Rc3kiC9CSy13BH8sC4mXOfA/209xj8CiVoEJcUQ=="],
 

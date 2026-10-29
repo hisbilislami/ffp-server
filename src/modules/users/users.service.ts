@@ -1,4 +1,4 @@
-import { prisma } from "../../utils/pg-helper";
+import { prisma } from "../../utils/sqlite-helper";
 import { UpdateUserInput, UserPaginationInput } from "./users.schema";
 
 export const usersService = {
