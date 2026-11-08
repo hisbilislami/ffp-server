@@ -20,4 +20,7 @@ export const auth = betterAuth({
     enabled: true,
   },
   plugins: [bearer()],
+  telemetry: {
+    enabled: Boolean(process.env.BETTER_AUTH_TELEMETRY),
+  },
 });
