@@ -1,3 +1,8 @@
 {
-  "bunVersion": "1.4.x"
+  "bunVersion": "1.4.x",
+  "functions": {
+    "dist/index.js": {
+      "runtime": "bun"
+    }
+  }
 }
