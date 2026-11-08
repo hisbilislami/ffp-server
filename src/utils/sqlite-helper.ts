@@ -1,4 +1,3 @@
-import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { Prisma, PrismaClient } from "../../generated/prisma/client";
 import { PrismaBunSQLite } from "prisma-sqlite-bun-adapter";
 
