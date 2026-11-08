@@ -1,11 +1,11 @@
 import { Prisma, PrismaClient } from "../../generated/prisma/client";
 import { PrismaBunSQLite } from "prisma-sqlite-bun-adapter";
 
-const connectionString = Bun.env.DATABASE_URL;
-
-if (!connectionString) {
-  throw new Error("Setup your database connection in your environment system.");
-}
+// const connectionString = Bun.env.DATABASE_URL;
+//
+// if (!connectionString) {
+//   throw new Error("Setup your database connection in your environment system.");
+// }
 
 const adapter = new PrismaBunSQLite(
   { url: "file:./prisma/ffp-server.db" },
