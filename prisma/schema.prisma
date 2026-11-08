@@ -1,0 +1,114 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+generator zod {
+  provider = "prisma-zod-generator"
+  output   = "../generated/zod"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Budgets {
+  id           Int            @id @default(autoincrement())
+  name         String
+  periodStart  DateTime       @map("period_start")
+  periodEnd    DateTime       @map("period_end")
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  userId       String         @map("user_id")
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  deletedAt    DateTime?      @map("deleted_at")
+  Transactions Transactions[]
+
+  @@map("t_budgets")
+}
+
+model Transactions {
+  id            Int       @id @default(autoincrement())
+  budget        Budgets   @relation(fields: [budgetId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  budgetId      Int       @map("budget_id")
+  name          String?   @map("name")
+  estimatePrice Decimal   @map("estimate_price")
+  realPrice     Decimal   @map("real_price")
+  diffPrice     Decimal?  @map("diff_price")
+  qty           Int
+  description   String?
+  createdAt     DateTime  @default(now()) @map("created_at")
+  updatedAt     DateTime  @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  @@map("t_transactions")
+}
+
+model User {
+  id            String    @id
+  name          String
+  email         String
+  emailVerified Boolean   @default(false)
+  image         String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+  accounts      Account[]
+  Budgets       Budgets[]
+
+  @@unique([email])
+  @@map("user")
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  token     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  ipAddress String?
+  userAgent String?
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([token])
+  @@index([userId])
+  @@map("session")
+}
+
+model Account {
+  id                    String    @id
+  accountId             String
+  providerId            String
+  userId                String
+  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  accessToken           String?
+  refreshToken          String?
+  idToken               String?
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  scope                 String?
+  password              String?
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+
+  @@index([userId])
+  @@map("account")
+}
+
+model Verification {
+  id         String   @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@index([identifier])
+  @@map("verification")
+}
