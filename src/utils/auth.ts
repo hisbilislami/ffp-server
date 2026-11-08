@@ -1,4 +1,5 @@
 import "@better-auth/telemetry";
+import "@better-auth/utils";
 import { prismaAdapter } from "@better-auth/prisma-adapter";
 import { betterAuth } from "better-auth";
 import { prisma } from "./sqlite-helper";

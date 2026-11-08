@@ -2,7 +2,7 @@
   "bunVersion": "1.4.x",
   "functions": {
     "src/index.ts": {
-      "includeFiles": "node_modules/@better-auth/telemetry/**"
+      "includeFiles": "node_modules/@better-auth/**"
     }
   }
 }

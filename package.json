@@ -9,6 +9,7 @@
   "dependencies": {
     "@better-auth/prisma-adapter": "^1.7.18",
     "@better-auth/telemetry": "^1.7.18",
+    "@better-auth/utils": "^0.5.1",
     "@hono/zod-openapi": "^1.4.0",
     "@hono/zod-validator": "^0.8.0",
     "@prisma/client": "^7.8.0",
